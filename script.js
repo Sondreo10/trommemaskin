@@ -1,8 +1,9 @@
 // referanser til html-elementer
 const audio = document.querySelectorAll("audio");
+const divTrommer = document.querySelectorAll(".tromme");
 
 // globale variabler
-const knapper = ["a","s","d","f","g","h","j","39"];
+const knapper = ["a","s","d","f","g","h","j","k","l"];
 
 // hendelsesfunksjoner
 document.onkeydown = function(event){
@@ -10,8 +11,15 @@ document.onkeydown = function(event){
   for(let i = 0;i < 9; i++){
     console.log(i);
     if(event.key ===knapper[i]){
+      divTrommer[i].classList.add("valgtTromme");
       audio[i].play();
-      audio[i].currenTime = 0;
+      audio[i].currentTime = 0;
     }
+  }
+}
+
+document.onkeyup = function(event) {
+  for(let i = 0; i < 9; i++){
+    divTrommer[i].classList.remove("valgtTromme");
   }
 }
